@@ -11,6 +11,16 @@ Aplicação criada dentro dos padrões SPRING REST, com controllers, services, d
 Também existem 4 testes unitários para garantir o funcionamento da rotina de cadastrar cidade e de consulta do forecast.
 
 ### Para rodar:
+Pré-Requisitos
+1. Internet
+2. Maven
+3. MongoDB
+
+Para configurar a URL do mongoDB abrir o arquivo e atribuir o endereço de conexão correto:
+
+forecast\src\main\resources\application.properties 
+> spring.data.mongodb.uri=mongodb://localhost:27017/ForecastApp
+
 É necessario ter o maven instalado bem como acesso a internet, pois a API de consulta é externa.
 BackEnd:
 > mvn install
@@ -20,3 +30,4 @@ depois:
 
 Após rodar o backend é só ir na pasta ForecastWeb e abrir o index.html
 O index utiliza o AngularJS para fazer as chamadas de API e Serealizar os objetos de retorno.
+Por padrão o BACKEND roda na porta 5151 para evitar conflitos com outras aplicações
