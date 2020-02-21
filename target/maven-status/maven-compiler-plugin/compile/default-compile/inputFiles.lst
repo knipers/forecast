@@ -1,0 +1,11 @@
+C:\bMoacir\forecast\src\main\java\com\weather\forecast\ForecastApplication.java
+C:\bMoacir\forecast\src\main\java\com\weather\forecast\services\CityService.java
+C:\bMoacir\forecast\src\main\java\com\weather\forecast\services\ForecastService.java
+C:\bMoacir\forecast\src\main\java\com\weather\forecast\consumer\OpenWheatherApiComponent.java
+C:\bMoacir\forecast\src\main\java\com\weather\forecast\controllers\ForecastController.java
+C:\bMoacir\forecast\src\main\java\com\weather\forecast\dto\CityDTO.java
+C:\bMoacir\forecast\src\main\java\com\weather\forecast\repository\CityRepository.java
+C:\bMoacir\forecast\src\main\java\com\weather\forecast\AppConfiguration.java
+C:\bMoacir\forecast\src\main\java\com\weather\forecast\controllers\CityController.java
+C:\bMoacir\forecast\src\main\java\com\weather\forecast\domains\Forecast.java
+C:\bMoacir\forecast\src\main\java\com\weather\forecast\domains\City.java

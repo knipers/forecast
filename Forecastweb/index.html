@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html ng-app="cadastro">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Forecast - Previsão do tempo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/f9e4cafde7.js" crossorigin="anonymous"></script>
+    <style>
+        .cardIcon {
+            font-size: 30px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-cloud-sun"></i>
+            Forecast
+        </a>
+    </nav>
+    <br>
+
+    <div class="container" >
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <div ng-controller="CidadeController">
+                
+                <div class="alert alert-danger alert-dismissible fade show" role="alert" ng-if="connectionError">
+                    <strong>Erro:</strong> Não foi possível conectar com o servidor.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                <h2>Cadastro de Cidades</h1>
+                <form name="formulario" ng-submit="cadastrar()">
+                    <div class="form-group">
+                        <label for="nome">Nome*</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Nome da cidade"
+                               maxlength="20" required ng-model="cidade.nome">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" ng-if="deuErro">
+                        <strong>Erro:</strong> {{cadastroErro.message}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </form>
+                <hr>
+                <h2>Lista de Cidades</h1>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th schope="col">ID</th>
+                            <th schope="col">Nome</th>
+                            <th schope="col">Previsão do tempo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="cidade in cidades">
+                        <th scope="row">{{ cidade.id }}</th>
+                        <td>{{ cidade.name }}</td>
+                        <td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalTemp" ng-click="buscarPrevisao(cidade.id)">Visualizar</button> <button type="button" class="btn btn-danger" ng-click="excluir(cidade.id)">Excluir</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalTemp" tabindex="-1" role="dialog" aria-labelledby="modalTemp" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="modalTemp">{{ previsao.cidade }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card" style="margin-bottom: 10px;" ng-repeat="x in previsao.dias">
+                                <i ng-class="x.class"> {{x.weather}} / {{x.dt}}</h3></i>
+                                <div class="card-body">
+                                    <p>Temperaturas:</p>
+                                    <p class="card-text">Mínima: {{x.min}} °C / Máxima: {{x.max}} °C</p>
+                                    <p class="card-text">Dur. Dia: {{x.day}} °C / Dur. Noite: {{x.night}} °C</p>
+                                    <p class="card-text">Ao amanhecer: {{x.morn}} °C / Ao entardecer: {{x.eve}} °C</p>
+                                </div>
+                              </div>
+                       </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="js/app.js"></script>
+
+
+</body>
+
+</html>

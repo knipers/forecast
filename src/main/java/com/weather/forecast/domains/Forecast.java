@@ -12,9 +12,10 @@ public class Forecast {
 	private Double tempMin;
 	private Double tempEve;
 	private Double tempMorn;
+	private String weather;
 
 	public Forecast(String cityName, Date date, Double tempDay, Double tempNight, Double tempMax, Double tempMin,
-			Double tempEve, Double tempMorn) {
+			Double tempEve, Double tempMorn, String weather) {
 		this.cityName = cityName;
 		this.date = date;
 		this.tempDay = tempDay;
@@ -93,10 +94,20 @@ public class Forecast {
 		this.tempMorn = tempMorn;
 	}
 
+	public String getWeather() {
+		return weather;
+	}
+
+	public void setWeather(String weather) {
+		this.weather = weather;
+	}
+
 	@Override
 	public String toString() {
-		return "ForecastDTO [cityName=" + cityName + ", date=" + date + ", tempDay=" + tempDay + ", tempNight="
-				+ tempNight + ", tempMax=" + tempMax + ", tempMin=" + tempMin + ", tempEve=" + tempEve + ", tempMorn="
-				+ tempMorn + "]";
+		return "Forecast [cityName=" + cityName + ", date=" + date + ", tempDay=" + tempDay + ", tempNight=" + tempNight
+				+ ", tempMax=" + tempMax + ", tempMin=" + tempMin + ", tempEve=" + tempEve + ", tempMorn=" + tempMorn
+				+ ", weather=" + weather + "]";
 	}
+
+
 }

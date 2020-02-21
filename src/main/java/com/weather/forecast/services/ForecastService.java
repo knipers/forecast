@@ -47,7 +47,16 @@ public class ForecastService {
 		item.setTempMin(temp.getDouble("min"));
 		item.setTempMorn(temp.getDouble("morn"));
 		item.setTempNight(temp.getDouble("night"));
+		String weather = getWeather(obj.getJSONArray("weather"));
+		item.setWeather(weather);
 		return item;
+	}
+	
+	private String getWeather(JSONArray weather) {
+		if (!weather.isEmpty()) {
+			return weather.getJSONObject(0).getString("main");
+		}
+		return "";
 	}
 
 }

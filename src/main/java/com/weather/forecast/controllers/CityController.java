@@ -38,12 +38,11 @@ public class CityController {
 	}
 	
 	@PostMapping("/city")
-	public ResponseEntity<Void> registerCity(@RequestBody CityDTO cityDTO) {
+	public ResponseEntity<CityDTO> registerCity(@RequestBody CityDTO cityDTO) {
 		City city = service.fromDTO(cityDTO); 
 		city = service.registerCity(city);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(city.getId()).toUri();
-		return ResponseEntity.created(uri).build();
-		
+		return ResponseEntity.created(uri).body(new CityDTO(city));		
 	}
 	
 	@DeleteMapping("/city/{id}")
